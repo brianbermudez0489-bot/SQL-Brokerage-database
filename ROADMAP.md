@@ -6,6 +6,13 @@ The next morning's run reviews your SQL, gives feedback, and assigns the next pa
 
 Status: `[ ]` not started · `[~]` in progress · `[x]` done
 
+This database is also the storage layer for the Java app in
+[JAVA-Stock-Portfolio](https://github.com/brianbermudez0489-bot/JAVA-Stock-Portfolio).
+Keep these names so the Java code can map rows to objects:
+- `securities.asset_type` is one of `STOCK`, `ETF`, `BOND` (Java subclasses `Stock`, `ETF`, `Bond`); bonds also need a nullable `coupon_rate`
+- `trades.side` is `BUY` or `SELL`; `trades.order_type` is `MARKET` or `LIMIT`, with a nullable `limit_price`
+- `accounts.cash_balance` is the account's cash
+
 Files: table definitions in `schema/`, sample data in `seed/`, query sets in `queries/`.
 
 ## Phase 1 - Design
@@ -41,3 +48,6 @@ Files: table definitions in `schema/`, sample data in `seed/`, query sets in `qu
 - [ ] Part 18: `LAG` / `LEAD` - daily % price change; biggest single-day moves
 - [ ] Part 19: Running totals and moving averages - cumulative cash flow per account, 5-day moving average price
 - [ ] Part 20: Capstone report - one query per business question in `queries/06_reports.sql`, and a README section showing results
+
+## Phase 8 - Ready for the Java app
+- [ ] Part 21: Create a `brokerage_app` MySQL user with only the privileges the Java app needs (`GRANT SELECT` on all tables and views, `INSERT` on trades, `UPDATE` on accounts); save the top-performers query in `queries/app_queries.sql` with a `?` placeholder for the sector so Java can run it as a `PreparedStatement`

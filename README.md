@@ -15,6 +15,10 @@ mysql -u root -p brokerage < seed/<file>.sql
 ```
 Or open the files in MySQL Workbench and run them in order.
 
+This database is the storage layer for the companion Java app,
+[JAVA-Stock-Portfolio](https://github.com/brianbermudez0489-bot/JAVA-Stock-Portfolio),
+which loads securities, saves trades and runs reports through JDBC.
+
 ## Layout
 - `schema/` - database and table definitions
 - `seed/` - sample data
